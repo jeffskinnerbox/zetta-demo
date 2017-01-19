@@ -5,6 +5,7 @@ node_modules/
 ..node-red.backup/
 .devices/
 .peers/
+tools/ecgsyn/ecgsyn
 
 
 ### ---------- General ---------- ###
