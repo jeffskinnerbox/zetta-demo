@@ -1,0 +1,116 @@
+
+ECGSYN: A program for generating a realistic synthetic ECG
+Copyright (C) 2003 by Patrick McSharry & Gari Clifford. All rights reserved.
+
+
+Compiling ECGSYN
+================
+
+This directory contains sources for the C version of ECGSYN.  Note, however,
+that two additional files are required in order to compile ECGSYN.  These
+files (dfour1.c and ran1.c) are those included in Numerical Recipes in C
+(http://www.nr.com/).  Before attempting to compile ECGSYN, obtain these
+two files from Numerical Recipes in C and place them in this directory.
+(These files are missing from this directory because they cannot be freely
+redistributed.)
+
+If you cannot obtain dfour1.c and ran1.c, several alternatives are available,
+including ready-to-run executable versions of ECGSYN for GNU/Linux, Solaris,
+and MS-Windows (see the directory above this one), as well as Matlab/Octave
+and Java implementations of ECGSYN.  See http://www.physionet.org/ for details.
+
+On most platforms, including GNU/Linux, MacOS X, and Unix, compile ECGSYN
+by typing
+	make
+in a terminal window.  This will also work under MS-Windows if you have
+installed the free Cygwin/gcc development toolkit (http://www.cygwin.com/).
+If you wish to use another compiler under MS-Windows, you are on your own.
+
+
+Running ECGSYN
+==============
+
+The executable version is named 'ecgsyn' (or, under MS-Windows, 'ecgsyn.exe').
+Once you have this file, move it into any directory in your PATH and run
+it by typing
+	ecgsyn
+in a terminal window.  You may add options (switches) to the 'ecgsyn' command;
+the option '$', as in
+	ecgsyn $
+starts 'ecgsyn' in interactive mode, as shown below:
+
+>> ecgsyn $
+ECGSYN: A program for generating a realistic synthetic ECG
+Copyright (c) 2003 by Patrick McSharry & Gari Clifford. All rights reserved.
+ 
+O Name of output data file                 "ecgsyn.dat"
+n Approximate number of heart beats        256
+s ECG sampling frequency [Hz]              256
+S Internal Sampling frequency [Hz]         256
+a Amplitude of additive uniform noise [mV] 0
+h Heart rate mean [bpm]                    60
+H Heart rate standard deviation [bpm]      1
+f Low frequency [Hz]                       0.1
+F High frequency [Hz]                      0.25
+v Low frequency standard deviation [Hz]    0.01
+V High frequency standard deviation [Hz]   0.01
+q LF/HF ratio                              0.5
+R Seed                                     1
+(Type ? for Help)
+->
+
+At the prompt, you can then type ? for help, or simply specify each parameter
+above that you want to change by typing the corresponding option letter (in the
+first column above) followed by a space and the new value, then <enter>.  To
+review the current settings, enter a blank line.  After you have modified all
+the parameters you want, type = followed by <enter> to run the program. You may
+also specify the parameters in a file called ecgsyn.opt, which is automatically
+read (if it exists) the next time you run the program.
+
+Any of the options can also be entered directly on the command line, by
+prefixing the option letter with '-', as in:
+	ecgsyn -h 80 -n 100
+(which would create output at a mean heart rate of 80 bpm, lasting for about
+100 beats).
+
+The source files opt.c and opt.h provide the option interpreter for ecgsyn;
+they were written by James Theiler.  For additional information, and for the
+most recent version of 'opt', see http://nis-www.lanl.gov/~jt/Software/.
+
+
+Interpreting ECGSYN's output
+============================
+
+Unless you have changed the name of the output file with the 'O' parameter, 
+you will find the synthetic ECG written to a text file called ecgsyn.dat,
+which contains three columns:
+ * the time in seconds
+ * the ECG amplitude in millivolts
+ * markers to indicate the locations of the waveform peaks:
+	0 - (no peak)
+	1 - Top of P-wave
+	2 - Q-point
+	3 - Peak of R-wave
+	4 - S-point
+	5 - Peak of T-wave
+
+To convert the ECG output into PhysioBank (WFDB) format, use a command
+such as
+	wrsamp -F 256 -o synth -x 200 1 <ecgsyn.dat
+(assuming you have not changed the default sampling frequency of 256 Hz).
+This command produces a record named 'synth' (a signal file named 'synth.dat'
+and a header file named 'synth.hea'), which can be read by other PhysioToolkit
+applications.  'wrsamp' is part of the WFDB software package;  see
+http://www.physionet.org/physiotools/wfdb.shtml for details.
+
+
+Further information
+===================
+
+The most recent version of this software can always be obtained from
+	http://www.physionet.org/physiotools/ecgsyn/
+
+See IEEE Transactions on Biomedical Engineering, 50(3),289-294, March 2003.
+
+Authors: P. McSharry (patrick AT mcsharry DOT net)
+	 G. Clifford (gari AT mit DOT edu)   

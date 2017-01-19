@@ -1,0 +1,14 @@
+{
+  "name": "zetta-demo",
+  "version": "0.0.1",
+  "description": " Zetta version of \"Hello, World\" but with a lot of functionality!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff Irland",
+  "license": "ISC",
+  "dependencies": {
+    "zetta": "^1.3.3-rc.1"
+  }
+}
