@@ -14,11 +14,12 @@ util.inherits(Dev, Device);
 
 // establishment of device state machine and initialization
 Dev.prototype.init = function(config) {
-    var name = this.opts.name || 'Mock Photocell Device: ' + 'MAC 123.ABC.483';
-
     config
-        .name(name)
+        // setup the device's initial state
+        .name('Mock Photocell Device')
         .type('photocell')
+
+        // define parameters that can be monitored in real-time
         .monitor('intensity');
 
     // used to simulate photocell intensity data
@@ -32,4 +33,5 @@ Dev.prototype.init = function(config) {
 };
 
 //----------------- Supporting Functions -----------------
+//----------------- Device Interface Code -----------------
 

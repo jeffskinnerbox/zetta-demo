@@ -12,14 +12,14 @@ via [git][01] and [GitHub][02].  For more information, check out these posts:
 Goto GitHub and create the new repository
 
     goto https://github.com/jeffskinnerbox
-    <create empty repository called '.bash'>
+    <create empty repository called 'zetta-demo'>
 
 ### Creating the Local Git Repository
-Make the .bash directory, move into it, and initialize it as a git repository
+Make the `~/src/zetta-demo` directory, move into it, and initialize it as a git repository
 
     cd ~
-    mkdir .bash
-    cd .bash
+    mkdir ~/src/zetta-demo
+    cd ~/src/zetta-demo
     git init
 Now create the README, bash_aliases, bash_logout, bash_profile, and bashrc files.
 
@@ -72,10 +72,10 @@ Now commit the files to the git repository:
     git commit -m 'Initial creation of Bash scripts for Linux box'
 
 ### Loading the GitHub Repository for the First Time
-Within the ~.bash directory, use git to load the files to GitHub
+Within the ~/src/zetta-demo directory, use git to load the files to GitHub
 
-    cd ~/.bash
-    git remote add origin https://github.com/jeffskinnerbox/.bash.git
+    cd ~//src/zetta-demo
+    git remote add origin https://github.com/jeffskinnerbox/zetta-demo.git
     git push -u origin master
 
 ### Updating the Local Git Repository

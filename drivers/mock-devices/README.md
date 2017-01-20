@@ -24,4 +24,7 @@ This driver simulates a smart power outlet thac can be turned on and off.
 Also, the drive will stream an analog value for the voltage and current for the outlet.
 
 # mock-dcmotor.js
+This driver simulates a simple DC motor that can start/stop, rotate forward or backward,
+and you can increse or decrease its speed of operation.
+Also, the drive will stream an analog value for the speed of the motor.
 

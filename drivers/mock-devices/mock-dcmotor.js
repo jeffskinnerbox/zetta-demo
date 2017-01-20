@@ -4,6 +4,7 @@ var util = require('util');
 var Device = require('zetta-device');
 //var Device = require('zetta').Device;
 
+// create device driver object
 var DCMotor = module.exports = function(DCMotor) {
     this.DCMotor = DCMotor;
     this.speed = 0;
@@ -11,34 +12,35 @@ var DCMotor = module.exports = function(DCMotor) {
 };
 util.inherits(DCMotor, Device);
 
+// establishment of device state machine and initialization
 DCMotor.prototype.init = function(config) {
     config
-        .type('DCMotor')
+        // setup the device's initial state
+        .name('Mock DC Motor Device')
+        .type('dcmotor')
+        .state('stopped')
+
+        // define parameters that can be monitored in real-time
         .monitor('speed')
-        .state('STOPPED')
-        .name(this.DCMotor)
-        .when('STOPPED', {
-            allow: ['RotateForwardinRPM']
-        })
-        .when('RotatingForward', {
-            allow: ['SpeedUpinRPM', 'Stop']
-        })
-        .when('SpeedingUp', {
-            allow: ['SpeedDowninRPM', 'Stop', 'SpeedUpinRPM']
-        })
-        .when('SpeedingDown', {
-            allow: ['SpeedUpinRPM', 'Stop', 'SpeedDowninRPM']
-        })
-        .map('RotateForwardinRPM', this.RotateForwardinRPM)
-        .map('SpeedUpinRPM', this.SpeedUpinRPM)
-        .map('SpeedDowninRPM', this.SpeedDowninRPM)
-        .map('Stop', this.Stop);
+
+        // define the transitions allowed by the state machine
+        .when('stopped', { allow: ['rotateforward'] })
+        .when('rotatingforward', { allow: ['speedingup', 'stop'] })
+        .when('speedingup', { allow: ['speedingdown', 'stop', 'speedingup'] })
+        .when('speedingdown', { allow: ['speedingup', 'stop', 'speedingdown'] })
+
+        // map the state machine transitions to methods
+        .map('rotateforward', this.RotateForwardinRPM)
+        .map('speedingup', this.SpeedUpinRPM)
+        .map('speedingdown', this.SpeedDowninRPM)
+        .map('stop', this.Stop);
 };
 
 //----------------- Supporting Functions -----------------
+//----------------- Device Interface Code -----------------
 
 DCMotor.prototype.Stop = function(cb) {
-    this.state = 'STOPPED';
+    this.state = 'stopped';
     var selfd = this;
     var speedvar;
     speedvar = setInterval(function() {
@@ -52,7 +54,7 @@ DCMotor.prototype.Stop = function(cb) {
 };
 
 DCMotor.prototype.RotateForwardinRPM = function(cb) {
-    this.state = 'RotatingForward';
+    this.state = 'rotatingforward';
     var self = this;
     var speedvar;
     speedvar = setInterval(function() {
@@ -67,7 +69,7 @@ DCMotor.prototype.RotateForwardinRPM = function(cb) {
 };
 
 DCMotor.prototype.SpeedUpinRPM = function(cb) {
-    this.state = 'SpeedingUp';
+    this.state = 'speedingup';
     var self = this;
     var speedvar;
     speedvar = setInterval(function() {
@@ -80,12 +82,12 @@ DCMotor.prototype.SpeedUpinRPM = function(cb) {
 };
 
 DCMotor.prototype.SpeedDowninRPM = function(cb) {
-    this.state = 'SpeedingDown';
+    this.state = 'speedingdown';
     var selfd = this;
     var speedvar;
     speedvar = setInterval(function() {
         if (selfd.speed == 0) {
-            this.state = 'STOPPED';
+            this.state = 'stopped';
         } else {
             selfd.speed = selfd.speed - 2;
             clearInterval(speedvar);

@@ -14,16 +14,16 @@ util.inherits(Dev, Device);
 Dev.prototype.init = function(config) {
     config
         // setup the device's initial state
+        .name('Mock LED Device')
         .type('led')
-        .name('Mock LED Device: ' + 'MAC AB12.346.D38')
         .state('off')
 
-        // define the transitions allowed by the device
+        // define the transitions allowed by the state machine
         .when('on', { allow: ['turn-off', 'strobe', 'toggle'] })
         .when('off', { allow: ['turn-on', 'strobe', 'toggle'] })
         .when('strobe', { allow: ['turn-on', 'turn-off'] })
 
-        // map the device transitions to methods that implement the transition
+        // map the state machine transitions to methods
         .map('turn-on', this.turnOn)
         .map('turn-off', this.turnOff)
         .map('strobe', this.strobe, [{name:'cycles', type:'number'}])
@@ -34,6 +34,7 @@ Dev.prototype.init = function(config) {
 };
 
 //----------------- Supporting Functions -----------------
+//----------------- Device Interface Code -----------------
 
 Dev.prototype.turnOff = function(cb) {
     this.state = 'off';

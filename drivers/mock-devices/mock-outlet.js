@@ -15,21 +15,23 @@ util.inherits(Dev, Device);
 Dev.prototype.init = function(config) {
     config
         // setup the device's initial state
+        .name('Mock Smart Outlet Device')
         .type('outlet')
-        .name('Mock Smart Outlet Device: ' + 'MAC 1BC2.3A6.E3B')
         .state('on')
+
+        // define parameters that can be monitored in real-time
         .monitor('voltage')
         .monitor('current')
 
-        // define the transitions allowed by the device
+        // define the transitions allowed by the state machine
         .when('on', { allow: ['turn-off'] })
         .when('off', { allow: ['turn-on'] })
 
-        // map the device transitions to methods that implement the transition
+        // map the state machine transitions to methods
         .map('turn-on', this.turnOn)
         .map('turn-off', this.turnOff);
 
-    // used to simulate voltage and current
+    // used to simulate voltage and current data
     var self = this;
     var counterV = 0;
     var counterI = 0;
@@ -53,6 +55,7 @@ Dev.prototype.init = function(config) {
 };
 
 //----------------- Supporting Functions -----------------
+//----------------- Device Interface Code -----------------
 
 Dev.prototype.turnOff = function(cb) {
     this.state = 'off';
