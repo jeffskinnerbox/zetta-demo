@@ -1,5 +1,17 @@
+# Glossary
+* Actuator: a type of motor that is responsible for moving or controlling a mechanism or system.
+* Sensor: a device that detects events or changes in quantities and provides a corresponding output.
+* Driver: the Zetta representation of a device. It includes a Scout for finding the physical device, and a driver for interacting with the device via javascript.
+* Scout: responsible for searching for a physical device, and alerting Zetta to it's existence.
+
+
+* [sudo npm i -g eslint](http://eslint.org/docs/user-guide/command-line-interface)
+* [Self-Documented package.json](http://blainsmith.com/articles/self-documented-package.json)
+* [Streamline JavaScript Development with ESLint](https://nodesource.com/blog/streamline-javascript-development-with-eslint/)
+
+
 # Zetta Training Materials
-The are several sources to get comftrible with Zetta.
+The are several sources to get comfortable with Zetta.
 
 * Documentation
     * [Zetta website](http://www.zettajs.org/)

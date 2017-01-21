@@ -5,8 +5,9 @@ var Device = require('zetta-device');
 //var Device = require('zetta').Device;
 
 // create device driver object
-var Dev = module.exports = function() {
+var Dev = module.exports = function(n) {
     Device.call(this);
+    this.asignedname = n;
 }
 util.inherits(Dev, Device);
 
@@ -14,7 +15,7 @@ util.inherits(Dev, Device);
 Dev.prototype.init = function(config) {
     config
         // setup the device's initial state
-        .name('Mock LED Device')
+        .name(this.asignedname)
         .type('led')
         .state('off')
 
