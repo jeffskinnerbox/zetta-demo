@@ -8,7 +8,7 @@ var Dev = module.exports = function() {
     Device.call(this);
     this.voltage = 0;
     this.current = 0;
-}
+};
 util.inherits(Dev, Device);
 
 // establishment of device state machine and initialization
@@ -60,11 +60,10 @@ Dev.prototype.init = function(config) {
 Dev.prototype.turnOff = function(cb) {
     this.state = 'off';
     cb();
-}
+};
 
 Dev.prototype.turnOn = function(cb) {
     this.state = 'on';
     cb();
-}
-
+};
 

@@ -7,7 +7,7 @@ var Device = require('zetta-device');
 // create device driver object
 var Screen = module.exports = function(n) {
     Device.call(this);
-}
+};
 util.inherits(Screen, Device);
 
 // establishment of device state machine and initialization
@@ -26,8 +26,8 @@ Screen.prototype.init = function(config) {
         .map('write', this.write, [{type:'text', name:'texttowrite'}])
 
         // define parameters that can be monitored in real-time
-        .monitor('written')
-}
+        .monitor('written');
+};
 
 //----------------- Supporting Functions -----------------
 //----------------- Device Interface Code -----------------
@@ -35,5 +35,5 @@ Screen.prototype.init = function(config) {
 Screen.prototype.write = function(texttowrite, cb) {
     this.written = texttowrite;
     cb();
-}
+};
 

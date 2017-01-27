@@ -8,7 +8,7 @@ var Device = require('zetta-device');
 var Dev = module.exports = function(n) {
     Device.call(this);
     this.asignedname = n;
-}
+};
 util.inherits(Dev, Device);
 
 // establishment of device state machine and initialization
@@ -27,8 +27,8 @@ Dev.prototype.init = function(config) {
         // map the state machine transitions to methods
         .map('turn-on', this.turnOn)
         .map('turn-off', this.turnOff)
-        .map('strobe', this.strobe, [{name:'cycles', type:'number'}])
-        .map('toggle', this.toggle);
+        .map('toggle', this.toggle)
+        .map('strobe', this.strobe, [{ name:'cycles', type:'number' }]);
 
         // stream data out of Zetta server, not the devices
         //.stream('stream-numbers', this.streamNumbers);
@@ -40,12 +40,12 @@ Dev.prototype.init = function(config) {
 Dev.prototype.turnOff = function(cb) {
     this.state = 'off';
     cb();
-}
+};
 
 Dev.prototype.turnOn = function(cb) {
     this.state = 'on';
     cb();
-}
+};
 
 Dev.prototype.toggle = function(cb) {
     if (this.state === 'on') {
@@ -53,7 +53,7 @@ Dev.prototype.toggle = function(cb) {
     } else {
         this.call('turn-on', cb);
     }
-}
+};
 
 // ************ not working right ********************
 Dev.prototype.strobe = function(cycles, cb) {
@@ -79,7 +79,7 @@ Dev.prototype.strobe = function(cycles, cb) {
         self.call('turn-on', cb);
     }
     cb();
-}
+};
 
 //Dev.prototype.streamNumbers = function(stream, cb) {
 //  setInterval(function(){

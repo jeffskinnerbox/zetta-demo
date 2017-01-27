@@ -41,13 +41,13 @@ DCMotor.prototype.init = function(config) {
 
 DCMotor.prototype.Stop = function(cb) {
     this.state = 'stopped';
-    var selfd = this;
+    var self = this;
     var speedvar;
     speedvar = setInterval(function() {
-        if (selfd.speed == 0) {
+        if (self.speed === 0) {
             clearInterval(speedvar);
         } else {
-            selfd.speed = selfd.speed - 2;
+            self.speed = self.speed - 2;
         }
     }, 500);
     cb();
@@ -83,13 +83,13 @@ DCMotor.prototype.SpeedUpinRPM = function(cb) {
 
 DCMotor.prototype.SpeedDowninRPM = function(cb) {
     this.state = 'speedingdown';
-    var selfd = this;
+    var self = this;
     var speedvar;
     speedvar = setInterval(function() {
-        if (selfd.speed == 0) {
+        if (self.speed === 0) {
             this.state = 'stopped';
         } else {
-            selfd.speed = selfd.speed - 2;
+            self.speed = self.speed - 2;
             clearInterval(speedvar);
         }
     }, 500);

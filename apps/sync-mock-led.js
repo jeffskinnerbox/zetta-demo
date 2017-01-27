@@ -19,4 +19,4 @@ module.exports = function(server) {
             led2.call('turn-on');
         });
     });
-}
+};

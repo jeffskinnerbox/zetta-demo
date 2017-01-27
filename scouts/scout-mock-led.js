@@ -9,11 +9,11 @@ var led_mock = require(global.dir + '/drivers/mock-devices/mock-led.js');
 // create scout object
 LEDScout = module.exports = function() {
     Scout.call(this);
-}
+};
 util.inherits(LEDScout, Scout);
 
 // initialization of the scout
-LEDScout.prototype.init = function(cb) {
+LEDScout.prototype.init = function(next) {
     var self = this;
     var counter = 0;
     var counterstop = 5;
@@ -26,5 +26,5 @@ LEDScout.prototype.init = function(cb) {
         }
     }, 1000);
 
-    cb();
-}
+    next();
+};
