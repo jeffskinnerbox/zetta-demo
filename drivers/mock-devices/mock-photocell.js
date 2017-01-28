@@ -29,6 +29,8 @@ Dev.prototype.init = function(config) {
         self.intensity = 3 * (Math.sin(counter*(Math.PI/180))+1.0);
         counter += 15;
     }, 100);
+
+    this.info('mock-photocell.js initialized');
 };
 
 //----------------- Supporting Functions -----------------

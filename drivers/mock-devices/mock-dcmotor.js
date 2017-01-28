@@ -34,6 +34,8 @@ DCMotor.prototype.init = function(config) {
         .map('speedingup', this.SpeedUpinRPM)
         .map('speedingdown', this.SpeedDowninRPM)
         .map('stop', this.Stop);
+
+    this.info('mock-dcmotor.js initialized');
 };
 
 //----------------- Supporting Functions -----------------

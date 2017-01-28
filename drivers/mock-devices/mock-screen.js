@@ -27,6 +27,8 @@ Screen.prototype.init = function(config) {
 
         // define parameters that can be monitored in real-time
         .monitor('written');
+
+    this.info('mock-pscreen.js initialized');
 };
 
 //----------------- Supporting Functions -----------------

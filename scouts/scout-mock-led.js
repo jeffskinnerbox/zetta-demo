@@ -3,8 +3,11 @@ var util = require('util');
 var Scout = require('zetta-scout');
 //var Scout = require('zetta').Scout;
 
+// read the directory to be used from the environment or package.json
+const DIR = process.env.DIR || global.dir;
+
 // create device objects
-var led_mock = require(global.dir + '/drivers/mock-devices/mock-led.js');
+var led_mock = require(DIR + '/drivers/mock-devices/mock-led.js');
 
 // create scout object
 LEDScout = module.exports = function() {
@@ -26,5 +29,6 @@ LEDScout.prototype.init = function(next) {
         }
     }, 1000);
 
+    this.server.info('scout-mock-led initialized');
     next();
 };

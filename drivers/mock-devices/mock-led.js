@@ -30,6 +30,8 @@ Dev.prototype.init = function(config) {
         .map('toggle', this.toggle)
         .map('strobe', this.strobe, [{ name:'cycles', type:'number' }]);
 
+    this.info('mock-led.js initialized');
+
         // stream data out of Zetta server, not the devices
         //.stream('stream-numbers', this.streamNumbers);
 };

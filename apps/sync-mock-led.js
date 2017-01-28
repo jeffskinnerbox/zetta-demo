@@ -9,7 +9,7 @@ module.exports = function(server) {
     var LED2Query = server.where({type: 'led', name: 'led2'});
 
     server.observe([LED0Query, LED1Query, LED2Query], function(led0, led1, led2) {
-        console.log('sync-mock-led.js app waiting for event');
+        server.info('In sync-mock-led.js app, waiting for event');
         led0.on('turn-off', function() {
             led1.call('turn-off');
             led2.call('turn-off');
@@ -19,4 +19,6 @@ module.exports = function(server) {
             led2.call('turn-on');
         });
     });
+
+    server.info('sync-mock-led.js initialized');
 };

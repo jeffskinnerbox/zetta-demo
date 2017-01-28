@@ -52,6 +52,8 @@ Dev.prototype.init = function(config) {
             self.current = 0;
         }
     }, 1000);
+
+    this.info('mock-outlet.js initialized');
 };
 
 //----------------- Supporting Functions -----------------

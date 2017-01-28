@@ -35,6 +35,7 @@
         "node-pixel": "^0.9.1"
     },
     "config": {
+        "hostname": "127.0.0.1",
         "port": 1337,
         "dir": "/home/jeff/src/zetta-demo"
     }
