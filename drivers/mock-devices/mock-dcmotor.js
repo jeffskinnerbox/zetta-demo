@@ -16,7 +16,7 @@ util.inherits(DCMotor, Device);
 DCMotor.prototype.init = function(config) {
     config
         // setup the device's initial state
-        .name('Mock DC Motor Device')
+        .name('Mock DC Motor')
         .type('dcmotor')
         .state('stopped')
 

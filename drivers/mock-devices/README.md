@@ -40,3 +40,4 @@ This device just accepts textual input
 and assumes this text is displayed for human viewing.
 What is displays can be streamed via an API.
 
+### mock-camera.js

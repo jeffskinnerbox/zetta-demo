@@ -16,7 +16,7 @@ util.inherits(Dev, Device);
 Dev.prototype.init = function(config) {
     config
         // setup the device's initial state
-        .name('Mock Photocell Device')
+        .name('Mock Photocell')
         .type('photocell')
 
         // define parameters that can be monitored in real-time

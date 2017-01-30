@@ -4,7 +4,7 @@ var Scout = require('zetta-scout');
 //var Scout = require('zetta').Scout;
 
 // read the directory to be used from the environment or package.json
-const DIR = process.env.DIR || global.dir;
+var DIR = process.env.DIR || global.dir;
 
 // create device objects
 var led_mock = require(DIR + '/drivers/mock-devices/mock-led.js');
@@ -24,7 +24,7 @@ LEDScout.prototype.init = function(next) {
     // create the multiple leds
     setInterval(function() {
         while (counter < counterstop) {
-            self.discover(led_mock, 'led' + counter);
+            self.discover(led_mock, 'Mock LED ' + counter);
             counter++;
         }
     }, 1000);

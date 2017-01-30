@@ -5,7 +5,7 @@
 //   https://www.pubnub.com/blog/2016-05-25-howcreate-a-smart-device-with-arduino-and-node-js-using-johnny-five/
 
 // read the directory to be used from the environment or package.json
-const DIR = process.env.DIR || global.dir;
+var DIR = process.env.DIR || global.dir;
 
 var util = require('util');
 var Scout = require('zetta-scout');

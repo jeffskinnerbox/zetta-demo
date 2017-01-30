@@ -15,7 +15,7 @@ Screen.prototype.init = function(config) {
     this.written = '';
     config
         // setup the device's initial state
-        .name('my screen')
+        .name('Mock Screen')
         .type('screen')
         .state('ready')
 

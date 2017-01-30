@@ -15,7 +15,7 @@ util.inherits(Dev, Device);
 Dev.prototype.init = function(config) {
     config
         // setup the device's initial state
-        .name('my neopixel')
+        .name('Mock Neopixel')
         .type('neopixel')
         .state('off')
 

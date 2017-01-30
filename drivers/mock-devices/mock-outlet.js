@@ -15,7 +15,7 @@ util.inherits(Dev, Device);
 Dev.prototype.init = function(config) {
     config
         // setup the device's initial state
-        .name('Mock Smart Outlet Device')
+        .name('Mock Smart Outlet')
         .type('outlet')
         .state('on')
 
