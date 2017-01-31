@@ -1,12 +1,8 @@
 
-// make global the working directory and port used by zetta server
-global.port = require('./package.json').config.port;
-global.dir = require('./package.json').config.dir;
-
-// read the port and directory to be used from the environment or package.json
-var HOSTNAME = require('./package.json').config.hostname || '127.0.0.1';
-var PORT = process.env.PORT || global.port;
-var DIR = process.env.DIR || global.dir;
+// read the port, directory, etc. to be used from the environment
+var PORT = process.env.PORT || 1337;
+var HOSTNAME = process.env.HOSTNAME || '127.0.0.1';
+var DIR = process.env.DIR || '/home/jeff/src/zetta-demo';
 var CLOUD = process.env.cloud || 'zetta-jeffskinnerbox.herokuapp.com';
 
 // create zetta server object
@@ -44,7 +40,7 @@ zetta()
         console.log('Your working directory is ' + DIR);
         console.log('Zetta Server is running at http://' + HOSTNAME + ':' + PORT);
         console.log('Use Zetta Browser http://browser.zettajs.io/#/overview?url=http:%2F%2F127.0.0.1:' + PORT);
-        console.log('Zetta Cloud Server is running at http://hello-zetta.herokuapp.com/servers/zetta-demo');
+        console.log('Zetta Cloud Server is running at http://' + CLOUD);
         console.log('Use Zetta Browser http://browser.zettajs.io/#/overview?url=http:%2F%2F' + CLOUD);
         console.log('You can view camera at ????');
         console.log('Start Node-RED with "node-red --port 1880 --usrDir ' + DIR + '/.node-red"');

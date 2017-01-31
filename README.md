@@ -38,6 +38,7 @@ and [iOS](https://github.com/zettaios/zetta)
 
 # Running the Zetta Demo
 Zetta Browser - http://browser.zettajs.io   or   http://browser.zettajs.io/#/overview?url=http:%2F%2F127.0.0.1:1337
+or
 
 ```bash
 # change directory to run the demo
@@ -102,3 +103,16 @@ curl -sS http://zetta-jeffskinnerbox.herokuapp.com/servers/zetta-demo?ql=where%2
 wscat -c ws://localhost:1337/servers/zetta-demo/events?topic=photocell%2F481edfb5-a4f1-42a0-85eb-677d42e1cf4f%2Fintensity
 wscat -c ws://zetta-jeffskinnerbox.herokuapp.com/servers/zetta-demo/events?topic=photocell%2F481edfb5-a4f1-42a0-85eb-677d42e1cf4f%2Fintensity
 ```
+
+# Siren API Browser
+An API Browser is a web-based tool to "browse" REST APIs in a generic way,
+rendering the JSON payloads nicely formated to the screen,
+and turning anything that looks like a hyperlink into a hyperlink.
+A Siren API Browser  does this specifically for a Siren Hypermedia API.
+
+* Kevin Swiber's Siren Browser - https://github.com/kevinswiber/siren-api-browser
+    * http://siren-api-browser.herokuapp.com/
+* Applicaster's Siren Browser - https://github.com/applicaster/siren-browser
+    * http://applicaster.github.io/siren-browser/#/siren-browser
+* A Siren Hypermedia browser-based client - https://github.com/wurlinc/siren-browser
+    * http://siren-browser.herokuapp.com/

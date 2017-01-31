@@ -3,8 +3,8 @@ var util = require('util');
 var Scout = require('zetta-scout');
 //var Scout = require('zetta').Scout;
 
-// read the directory to be used from the environment or package.json
-var DIR = process.env.DIR || global.dir;
+// read the port, directory, etc. to be used from the environment
+var DIR = process.env.DIR || '/home/jeff/src/zetta-demo';
 
 // create device objects
 var led_mock = require(DIR + '/drivers/mock-devices/mock-led.js');

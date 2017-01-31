@@ -42,7 +42,8 @@
     "config": {
         "port": 1337,
         "hostname": "127.0.0.1",
-        "dir": "/home/jeff/src/zetta-demo"
+        "dir": "/home/jeff/src/zetta-demo",
+        "cloud": "zetta-jeffskinnerbox.herokuapp.com"
     },
     "_comment": "use http://package-json-validator.com to verify the contents of this package.json file"
 }
